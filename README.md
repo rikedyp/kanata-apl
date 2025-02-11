@@ -1,5 +1,19 @@
 # Kanata APL Layouts
-International keyboard layouts for APL users.
+<div align="center"><img
+    alt="Image of a keycap with the APL logo on it in green tones"
+    title="Kanata APL Layouts"
+    align="center"
+    height="220"
+    src="assets/kanata-apl-icon.svg"
+  />
+  <p>International keyboard layouts for APL.</p>
+</div>
+
+[![GitHub Licence](https://img.shields.io/github/license/sloorush/ullu)](LICENSE)
+
+<h3 align="center">
+  
+</h3>
 
 - [About Kanata](#about-kanata)
 - [Usage](#usage)
