@@ -41,6 +41,36 @@ Follow these steps to have the Kanata APL keyboard start automatically when you 
 
 When you log in, the Kanata icon should appear in your system tray.
 
+### Autostart on Linux
+Most users can follow these instructions to have Kanata start at login.
+
+1. Download the **kanata** executable from the [Kanata releases page](https://github.com/jtroo/kanata/releases)
+1. Make sure it is executable and move it to `/usr/local/bin/kanata`
+    ```bash
+    chmod +x kanata
+    sudo mv kanata /usr/local/bin/kanata
+    ```
+1. Download one of the **.kbd** files from this repository
+1. Modify the following configuration and save it to `/lib/systemd/system/kanata.service`
+    ```
+    [Unit]
+    Description=Kanata keyboard remapper
+    Documentation=https://github.com/jtroo/kanata
+
+    [Service]
+    Type=simple
+    ExecStart=/usr/local/bin/kanata --cfg /home/user/.config/kanata/config-name.kbd
+    Restart=no
+
+    [Install]
+    WantedBy=default.target
+    ```
+1. Enable the service
+    - Run it now with `sudo systemctl start kanata`
+    - Run at login with `sudo systemctl enable kanata`
+
+System administrators and other users with particular security concerns should refer to [Yvan-Masson's suggested configuration](https://github.com/jtroo/kanata/discussions/130#discussioncomment-11377658) in the Kanata discussions.
+
 ## Available layouts
 | Layout (link to diagram) | Kanata configuration file |
 | ------------------------ | ------------------------- |
