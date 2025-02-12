@@ -31,9 +31,15 @@ Follow these steps to have the Kanata APL keyboard start automatically when you 
 
 1. Download one of the **.kbd** files from this repository
 1. Download **kanata_gui.exe** from the [Kanata releases page](https://github.com/jtroo/kanata/releases)
+1. Place the two downloaded files in the same permanent location.
 1. Rename the keyboard layout file to **kanata.kbd**
+1. Right click on **kanata_gui.exe**
+    1. Click **Show more options**
+    1. Click **Create shortcut**
 1. Press <kbd>Win</kbd>+<kbd>R</kbd>, type `shell:startup` and press <kbd>Enter</kbd>
-1. Copy both **kanata.kbd** and **kanata_gui.exe** to this startup folder
+1. Copy the **shortcut** to this startup folder
+
+When you log in, the Kanata icon should appear in your system tray.
 
 ## Available layouts
 | Layout (link to diagram) | Kanata configuration file |
