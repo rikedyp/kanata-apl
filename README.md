@@ -18,6 +18,7 @@
 - [About Kanata](#about-kanata)
 - [Usage](#usage)
     - [Autostart on Microsoft Windows](#autostart-on-microsoft-windows)
+    - [Autostart on Linux](#autostart-on-linux)
 - [Available layouts](#available-layouts)
 
 ## About Kanata
