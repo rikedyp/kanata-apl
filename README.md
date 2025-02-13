@@ -73,6 +73,14 @@ Most users can follow these instructions to have Kanata start at login.
 System administrators and other users with particular security concerns should refer to [Yvan-Masson's suggested configuration](https://github.com/jtroo/kanata/discussions/130#discussioncomment-11377658) in the Kanata discussions.
 
 ## Available layouts
+
+### Shifting key layouts
+When Kanata uses these configurations there are one or more keys defined that, while held, enable the output of APL symbols.
+
+They are set to <kbd>Caps Lock</kbd> and <kbd>Right Ctrl</kbd>, but can be changed by editing the section beginning `deflayermap (base)`.
+
+The names and symbols for keys are found in the function `str_to_oscode` in [the source](https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs) and are defined according to the US English layout. Often these are the same keys as in other layouts, but the documentation includes more information about [configuration for non-US keyboards](https://github.com/jtroo/kanata/blob/main/docs/config.adoc#non-us-keyboards).
+
 | Layout (link to diagram) | Kanata configuration file |
 | ------------------------ | ------------------------- |
 | [English (United Kingdom)](./layouts.md#en-gb) |  [en-GB_APL.kbd](en-GB_APL.kbd) |
