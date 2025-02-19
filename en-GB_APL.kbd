@@ -1,6 +1,6 @@
 ;; English (UK) keyboard mappings for APL
 
-;; Choose one or more APL shifting keys by mapping them to @apl-shift in the base layer
+;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
 (deflayermap (base)
   caps  @apl-mode
   rctrl @apl-mode
