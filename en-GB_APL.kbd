@@ -96,10 +96,13 @@
   /             (unicode ⍠)
 )
 
-(defalias apl-mode (tap-hold 50 50 _
-  (layer-while-held APL)))
+(defalias apl-mode   ;; Double-tap prefix key to output its symbol
+  (tap-dance 200 (
+    (layer-while-held APL)
+    _
+  ))
+)
 
-(defalias apl-shift (tap-hold 50 50 _
-  (layer-while-held APL-shift)))
+(defalias apl-shift (layer-while-held APL-shift))
 
 (defsrc)

@@ -79,7 +79,7 @@ System administrators and other users with particular security concerns should r
 ### Shifting key layouts
 When Kanata uses these configurations there are one or more keys defined that, while held, enable the output of APL symbols.
 
-They are set to <kbd>Caps Lock</kbd> and <kbd>Right Ctrl</kbd>, but can be changed by editing the section beginning `deflayermap (base)`.
+They are set to <kbd>Caps Lock</kbd> and <kbd>Right Ctrl</kbd>, but can be changed by editing the section beginning `deflayermap (base)`. Double-tap the prefix key to perform its original action. The double-tap timeout is 200ms by default, but can be changed in the section `defalias apl-mode`.
 
 The names and symbols for keys are found in the function `str_to_oscode` in [the source](https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs) and are defined according to the US English layout. Often these are the same keys as in other layouts, but the documentation includes more information about [configuration for non-US keyboards](https://github.com/jtroo/kanata/blob/main/docs/config.adoc#non-us-keyboards).
 
