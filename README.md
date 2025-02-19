@@ -20,6 +20,8 @@
     - [Autostart on Microsoft Windows](#autostart-on-microsoft-windows)
     - [Autostart on Linux](#autostart-on-linux)
 - [Available layouts](#available-layouts)
+    - [Shifting key layouts](#shifting-key-layouts)
+    - [Prefix key layouts](#prefix-key-layouts)
 
 ## About Kanata
 [Kanata](https://github.com/jtroo/kanata) is a cross-platform software for enabling multiple keyboard layers.
@@ -80,6 +82,17 @@ When Kanata uses these configurations there are one or more keys defined that, w
 They are set to <kbd>Caps Lock</kbd> and <kbd>Right Ctrl</kbd>, but can be changed by editing the section beginning `deflayermap (base)`.
 
 The names and symbols for keys are found in the function `str_to_oscode` in [the source](https://github.com/jtroo/kanata/blob/main/parser/src/keys/mod.rs) and are defined according to the US English layout. Often these are the same keys as in other layouts, but the documentation includes more information about [configuration for non-US keyboards](https://github.com/jtroo/kanata/blob/main/docs/config.adoc#non-us-keyboards).
+
+| Layout (link to diagram) | Kanata configuration file |
+| ------------------------ | ------------------------- |
+| [English (United Kingdom)](./layouts.md#en-gb) |  [en-GB_APL.kbd](en-GB_APL.kbd) |
+
+### Prefix key layouts
+A prefix key is a special key or character which is entered immediately before typing the corresponding key. The following layouts use both <kbd>Backquote</kbd> (also known as <kbd>backtick</kbd> or <kbd>grave</kbd>, <kbd>`</kbd>) ⍺nd <kbd>Backslash</kbd> (<kbd>\\</kbd>) as prefix keys. 
+
+Prefix keys can be configured by editing the section beginning `deflayermap (base)`.
+
+Double-tap the prefix key to perform its original action. The double-tap timeout is 200ms by default, but can be changed in the section `defalias apl-mode`.
 
 | Layout (link to diagram) | Kanata configuration file |
 | ------------------------ | ------------------------- |
