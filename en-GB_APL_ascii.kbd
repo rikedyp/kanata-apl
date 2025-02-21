@@ -1,0 +1,184 @@
+(defsrc)
+;; ab y → ←
+;; xx ×
+;; /\ ×
+;; :- ÷
+;; *O ⍟
+;; OO ○
+;; oO ○ ○
+;; 77 ⌈
+;; FF ⌈
+;; || ⌊
+;; LL ⌊
+;; |_ ⊥
+;; TT ⊤
+;; =/ ≠ ≠ ≠
+;; <= ≤ 
+;; <_ ≤
+;; >= ≥
+;; >_ ≥
+;; == ≡
+;; =_ ≡
+;; 7= ≢
+;; Z- ≢
+;; vv ∨
+;; ^^ ∧
+;; ^~ ⍲
+;; v~ ⍱
+;; ^| ↑
+;; v| ↓
+;; (( ⊂
+;; cc ⊂
+;; (_ ⊆
+;; c_ ⊆
+;; )) ⊃
+;; )_ ⊇
+;; [| ⌷
+;; |] ⌷
+;; A| ⍋
+;; V| ⍒
+;; ii ⍳
+;; i_ ⍸
+;; ee ∊
+;; e_ ⍷
+;; uu ∪
+;; nn ∩
+;; /- ⌿
+;; \- ⍀
+;; ,- ⍪
+;; rr ⍴
+;; pp ⍴
+;; o| ⌽
+;; o- ⊖
+;; o\ ⍉
+;; :: ¨
+;; "" ¨
+;; ~: ⍨
+;; ~" ⍨
+;; *: ⍣
+;; *" ⍣
+;; oo ∘ ∘
+;; o_ ⍛
+;; o: ⍤
+;; o" ⍤ ⍤
+;; O: ⍥
+;; O" ⍥ ⍥ missing lsft
+
+;; <> ⋄
+;; [<
+;; <-   ← ;; ,- not ←
+;; aa   ⍺
+
+;;
+
+(defvar
+  replace ((key-history _ 1))
+)
+
+(defcfg process-unmapped-keys yes)
+
+(deflayermap (base)
+  tab @complete
+  ;;rsft @shift
+)
+;;   lsft @shift
+;;   rsft @shift
+
+
+;; look at history of previously typed characters
+;; see if they match a defined composition
+
+;;(defalias shift (layer-while-held shift) )
+;;(deflayermap (shift)
+;;  , @<
+;;  o @O
+;;)
+
+(defalias
+  bksp (multi Backspace rpt)
+)
+
+(defalias
+  o (switch
+    ((key-history o 2)) (multi Backspace rpt (unicode ∘)) break
+    ((or (key-history lsft 2)(key-history rsft 2))) (multi Backspace rpt (unicode ○)) break
+    ((and (key-history 2 3) (key-history o 2))) (multi Backspace rpt (unicode ⍥)) fallthrough
+    ;;((and (key-history S-2 3) (key-history S-O 2))) (multi Backspace rpt (unicode ⍥)) break
+    ;; shift o; shift 2
+  )
+)
+
+(defalias 2 (switch ;; ⍥ ⍤
+  ((and (key-history rsft 2) (key-history o 3) (key-history rsft 4))) (multi Backspace rpt (unicode ⍥)) break
+  ((and (key-history o 2) (key-history rsft 3))) (multi Backspace rpt (unicode ⍥)) break
+  ((key-history o 3)) (multi Backspace rpt (unicode ⍤)) break
+  ;;((and (key-history o 2) (or (key-history lsft 3) (key-history rsft 3)))) (multi Backspace rpt (unicode ⍥)) fallthrough
+  ;;((key-history o 2)) (multi Backspace rpt (unicode ⍤)) break
+))
+
+(defalias x
+  (switch
+    ((key-history x 2)) (multi Backspace rpt (unicode ×)) break
+  )
+)
+
+
+(defalias a
+  (switch
+    ((key-history a 2))(multi @bksp (unicode ⍺)) break
+  )
+)
+
+(defalias <
+  (unicode !)
+)
+
+(defalias = ;; +
+  (switch
+    ((key-history / 2))(multi @bksp (unicode ≠) ) break
+    ;; ≢
+  )
+)
+
+(defalias - ;; <
+  (switch
+    ((key-history , 2)) (multi @bksp (unicode ←)) break
+    ((and (key-history / 2) (key-history = 3))) (multi Backspace (unicode ≢)) break  ;; /=-
+    () _ break
+  )
+)
+
+(defalias -2 ;;
+  (switch 
+  )
+)
+
+(defalias \ (switch
+  ((key-history / 2)) (multi Backspace rpt (unicode ×)) break
+))
+
+(defalias / ;; <
+  (switch
+    ((and (key-history = 3) (key-history - 2))) (multi @bksp (unicode ≢)) fallthrough ;; ≢
+    ((and (key-history - 2) (key-history = 3))) (multi @bksp (unicode ≢)) break       ;; ≢
+    ((key-history = 2)) (multi Backspace rpt (unicode ≠)) break
+    ((key-history \ 2)) (multi Backspace rpt (unicode ×)) break
+    ;; ≢
+    () _ break
+  )
+)
+
+(defalias complete
+  (switch 
+    ((key-history - 1)) @- break
+    ((key-history a 1)) @a break
+    ((key-history = 1)) @= break
+    ((key-history / 1)) @/ break
+    ((key-history o 1)) @o break
+    ((key-history 2 1)) @2 break
+    () tab break
+  )
+)
+
+;; abrudz's board has layer activation e.g.
+;; tab < - gives 
