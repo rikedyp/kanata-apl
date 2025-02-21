@@ -15,7 +15,7 @@
   
 </h3>
 
-- [About Kanata](#about-kanata)
+- [About](#about)
 - [Usage](#usage)
     - [Autostart on Microsoft Windows](#autostart-on-microsoft-windows)
     - [Autostart on Linux](#autostart-on-linux)
@@ -23,8 +23,8 @@
     - [Shifting key layouts](#shifting-key-layouts)
     - [Prefix key layouts](#prefix-key-layouts)
 
-## About Kanata
-[Kanata](https://github.com/jtroo/kanata) is a cross-platform software for enabling multiple keyboard layers.
+## About
+[Kanata](https://github.com/jtroo/kanata) is cross-platform software to modify the behaviour of keyboard input. This repository contains Kanata configuration files to enable [typing APL symbols](https://aplwiki.com/wiki/Typing_glyphs).
 
 ## Usage
 This repository provides Kanata configurations as **.kbd** files. Specific instructions for running Kanata on different platforms are found in the Kanata repository.
