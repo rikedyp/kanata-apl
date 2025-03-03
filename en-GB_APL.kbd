@@ -2,7 +2,7 @@
 
 ;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
 (deflayermap (base)
-  caps  @apl-mode
+  caps  (multi F13 @apl-mode)
   rctrl @apl-mode
 )
 
@@ -34,7 +34,7 @@
   p             (unicode *)
   [             (unicode ←)
   ]             (unicode →)
-  a             (unicode ⍺)
+  a             (multi a Backspace (unicode ⍺))
   s             (unicode ⌈)
   d             (unicode ⌊)
   f             (unicode _)
