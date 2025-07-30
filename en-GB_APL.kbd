@@ -1,4 +1,5 @@
 ;; English (UK) keyboard mappings for APL
+;; en-GB_APL-v1.0
 
 ;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
 (deflayermap (base)
