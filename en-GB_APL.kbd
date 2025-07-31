@@ -1,71 +1,38 @@
 ;; English (UK) keyboard mappings for APL
 ;; en-GB_APL-v1.0
 
-;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
-(deflayermap (base)
-  caps  @apl-mode
-  rctrl @apl-mode
-  lshift @shift-mode
+(defcfg
+  concurrent-tap-hold true
 )
 
-(deflayermap (pre-shift)
-;; Redefine normal shifted keys so that order of shifting key presses does not matter
-  Backquote       (unicode ¬)
-  1               (unicode !)
-  2               (unicode r#"""#)
-  3               (unicode £)
-  4               (unicode $)
-  5               (unicode %)
-  6               (unicode ^)
-  7               (unicode &)
-  8               (unicode *)
-  9               (unicode "(")
-  0               (unicode ")")
-  -               (unicode _)
-  =               (unicode +)
-  q               (unicode Q)
-  w               (unicode W)
-  e               (unicode E)
-  r               (unicode R)
-  t               (unicode T)
-  y               (unicode Y)
-  u               (unicode U)
-  i               (unicode I)
-  o               (unicode O)
-  p               (unicode P)
-  [               (unicode {)
-  ]               (unicode })
-  a               (unicode A)
-  s               (unicode S)
-  d               (unicode D)
-  f               (unicode F)
-  g               (unicode G)
-  h               (unicode H)
-  j               (unicode J)
-  k               (unicode K)
-  l               (unicode L)
-  ;               (unicode :)
-  '               (unicode @)
-  Backslash       (unicode ~)
-  IntlBackslash   (unicode |)
-  z               (unicode Z)
-  x               (unicode X)
-  c               (unicode C)
-  v               (unicode V)
-  b               (unicode B)
-  n               (unicode N)
-  m               (unicode M)
-  ,               (unicode <)
-  .               (unicode >)
-  /               (unicode ?)
-  End  (multi lshift end)
-  Home (multi lshift home)
-  caps @apl-shift
+(defvar
+  apl caps
 )
+
+(defchordsv2
+  (caps lshift) @apl-shift 200 first-release ()
+)
+;; this delay means a massive compromise between
+;; shifting key order not mattering and other shortcuts requiring a delay
+;; e.g. to select text with shift+[arrow keys], must hold shift for at least 200ms
+
+;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
+(deflayermap (base)
+  caps     @apl-mode
+  rctrl    @apl-mode
+)
+
+(defalias apl-mode   ;; Double-tap prefix key to output its symbol
+  (tap-dance 200 (
+    (layer-while-held APL)
+    _
+  ))
+)
+(defalias apl-shift (layer-while-held APL-shift))
 
 (deflayermap (APL)
   lshift @apl-shift
-  rshift @apl-shift
+  ;;rshift @apl-shift
   Backquote     (unicode ⋄)
   1             (unicode ¨)
   2             (unicode ¯)
@@ -152,16 +119,5 @@
   .             (unicode ⍙)
   /             (unicode ⍠)
 )
-
-(defalias apl-mode   ;; Double-tap prefix key to output its symbol
-  (tap-dance 200 (
-    (layer-while-held APL)
-    _
-  ))
-)
-
-(defalias shift-mode (layer-while-held pre-shift))
-
-(defalias apl-shift (layer-while-held APL-shift))
 
 (defsrc)
