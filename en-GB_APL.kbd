@@ -10,7 +10,7 @@
 )
 
 (defchordsv2
-  (caps lshift) @apl-shift 50 first-release ()
+  (caps lshift) @apl-shift 100 first-release ()
 )
 ;; this delay means a massive compromise between
 ;; shifting key order not mattering and other shortcuts requiring a delay
