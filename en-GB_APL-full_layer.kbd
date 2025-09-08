@@ -1,0 +1,102 @@
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]
+  caps a    s    d    f    g    h    j    k    l    ;    '    Backslash ret
+  lsft IntlBackslash z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defalias shift (layer-while-held shift))
+
+(deflayer base
+  _  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]
+  (layer-while-held APL) a    s    d    f    g    h    j    k    l    ;    '  (unicode #)   ret
+  @shift \  z    x    c    v    b    n    m    ,    .    /    @shift
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer shift
+  grv  (unicode !) (unicode r#"""#) (unicode £) (unicode "$") (unicode %) (unicode ^) (unicode &) (unicode *) (unicode "(") (unicode ")") (unicode _) (unicode +)   bspc
+  tab  (unicode Q) (unicode W) (unicode E) (unicode R) (unicode T) (unicode Y) (unicode U) (unicode I) (unicode O) (unicode P) { }
+  (layer-while-held APL-shift) a    s    d    f    g    h    j    k    l    ;    '  (unicode ~)   ret
+  lsft (unicode |) z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer APL
+  (unicode ⋄) (unicode ¨) (unicode ¯) (unicode <) (unicode ≤) = (unicode ≥) (unicode >) (unicode ≠) (unicode ∨) (unicode ∧) (unicode ×) (unicode ÷) bspc
+  tab (unicode ?) (unicode ⍵) (unicode ∊) (unicode ⍴) (unicode ~) (unicode ↑) (unicode ↓) (unicode ⍳) (unicode ○) (unicode *) (unicode ←) (unicode →)
+  _ (unicode ⍺) (unicode ⌈) (unicode ⌊) (unicode _) (unicode ∇) (unicode ∆) (unicode ∘) ' (unicode ⎕) (unicode ⍎) (unicode ⍕) (unicode #) ret
+  (layer-while-held APL-shift) (unicode ⊢) (unicode ⊂) (unicode ⊃) (unicode ∩) (unicode ∪) (unicode ⊥) (unicode ⊤) (unicode |) (unicode ⍝) (unicode ⍀) (unicode ⌿) rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayer APL-shift
+  (unicode ⌺) (unicode ⌶) (unicode ⍫) (unicode ⍒) (unicode ⍋) (unicode ⌽) (unicode ⍉) (unicode ⊖) (unicode ⍟) (unicode ⍱) (unicode ⍲) (unicode !) (unicode ⌹) bspc
+  tab (unicode ?) (unicode ⍵) (unicode ⍷) (unicode ⍴) (unicode ⍨) (unicode ↑) (unicode ↓) (unicode ⍸) (unicode ⍥) (unicode ⍣) (unicode ⍞) (unicode ⍬)
+  _ (unicode ⍺) (unicode ⌈) (unicode ⌊) (unicode ⍛) (unicode ⍢) (unicode ∆) (unicode ⍤) (unicode ⌸) (unicode ⌷) (unicode ≡) (unicode ≢) (unicode #) _
+  _ (unicode ⊣) (unicode ⊆) (unicode ⊇) (unicode ∩) (unicode ∪) (unicode ⊥) (unicode ¤) (unicode ∥) (unicode ⍪) (unicode ⍙) (unicode ⍠) _
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(deflayermap AltGr
+  grv (unicode ¦)
+  2 (layer-switch diaeresis)
+  4 (unicode €)
+  6 (layer-switch circumflex)
+)
+
+(deflayermap diaeresis
+  lsft (layer-while-held diaeresis-shift)
+  rsft (layer-while-held diaeresis-shift)
+  spc  (multi (unicode ¨) (layer-switch base))
+  a    (multi (unicode ä) (layer-switch base))
+  e    (multi (unicode ë) (layer-switch base))
+  i    (multi (unicode ï) (layer-switch base))
+  o    (multi (unicode ö) (layer-switch base))
+  u    (multi (unicode ü) (layer-switch base))
+  w    (multi (unicode ẅ) (layer-switch base))
+  y    (multi (unicode ÿ) (layer-switch base))
+)
+(deflayermap diaeresis-shift
+  a (multi (unicode Ä) (layer-switch base))
+  e (multi (unicode Ë) (layer-switch base))
+  i (multi (unicode Ï) (layer-switch base))
+  o (multi (unicode Ö) (layer-switch base))
+  u (multi (unicode Ü) (layer-switch base))
+  w (multi (unicode Ẅ) (layer-switch base))
+  y (multi (unicode Ÿ) (layer-switch base))
+)
+
+(deflayermap circumflex
+  lsft (layer-while-held circumflex-shift)
+  rsft (layer-while-held circumflex-shift)
+  spc  (multi (unicode ^) (layer-switch base))
+  a (multi (unicode â) (layer-switch base))
+  e (multi (unicode ê) (layer-switch base))
+  i (multi (unicode î) (layer-switch base))
+  o (multi (unicode ô) (layer-switch base))
+  u (multi (unicode û) (layer-switch base))
+  w (multi (unicode ŵ) (layer-switch base))
+  y (multi (unicode ŷ) (layer-switch base))
+)
+(deflayermap circumflex-shift
+  a (multi (unicode Â) (layer-switch base))
+  e (multi (unicode Ê) (layer-switch base))
+  i (multi (unicode Î) (layer-switch base))
+  o (multi (unicode Ô) (layer-switch base))
+  u (multi (unicode Û) (layer-switch base))
+  w (multi (unicode Ŵ) (layer-switch base))
+  y (multi (unicode Ŷ) (layer-switch base))
+)
+
+(deflayermap acute
+)
+(deflayermap acute-shift)
+
+(deflayermap grav)
+(deflayermap grav-shift)
+
+(deflayermap tilde)
+(deflayermap tilde-shift)
