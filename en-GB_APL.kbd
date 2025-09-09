@@ -40,6 +40,7 @@
 (deflayermap (APL)
   lshift @apl-shift
   rshift @apl-shift
+  ins    (unicode ) ;; Special Unicode sequence to activate the tracer (TC)
   Backquote     (unicode ⋄)
   1             (unicode ¨)
   2             (unicode ¯)
