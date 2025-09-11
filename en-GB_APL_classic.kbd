@@ -1,0 +1,185 @@
+;; English (UK) keyboard mappings for APL
+;; en-GB_APL_classic-v0.1
+
+;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
+(deflayermap base
+  caps  @apl-mode
+  rctrl @apl-mode
+  lshift @shift-mode
+  lctrl @ctrl-mode
+  Backquote (tap-hold 20 100 (unicode `) (layer-while-held underscore))
+)
+
+;; Control codes are the output of 'UTF-8'⎕UCS code
+;; where code is given on each line
+(defalias ED (unicode )) ;; 239 160 168
+(defalias TC (unicode )) ;; 239 160 169
+(defalias FD (unicode )) ;; 239 160 159
+(defalias BK (unicode )) ;; 239 160 160
+(defalias CP (unicode )) ;; 239 160 157
+(defalias CT (unicode )) ;; 239 160 146
+(defalias PT (unicode )) ;; 239 160 147
+(defalias SA (unicode )) ;; 239 161 161
+(defalias FX (unicode )) ;; 239 160 176
+(defalias EP (unicode )) ;; 239 160 132
+(defalias QT (unicode )) ;; 239 160 128
+(defalias TB (unicode )) ;; 239 160 130
+
+(deflayermap shift-mode
+  lctrl @shift-ctrl-mode
+  rctrl @shift-ctrl-mode
+  ret   @ED ;; Shift+Enter
+  esc   @QT ;; Shift+Esc
+  ___ (multi lshift _) ;; Defaults for unmapped keys
+)
+(deflayermap ctrl-mode
+  lshift @shift-ctrl-mode
+  rshift @shift-ctrl-mode
+  ret @TC ;; Ctrl+Enter
+  ___ (multi lctrl _) ;; Defaults for unmapped keys
+)
+(deflayermap shift-ctrl-mode
+  ret       @FD ;; Ctrl+Shift+Enter
+  Backspace @BK ;; Ctrl+Shift+Backspace
+  s         @FX
+  c         @CP
+  x         @CT
+  v         @PT
+  a         @SA
+)
+
+(deflayermap underscore
+  a   (unicode Ⓐ)
+  b   (unicode Ⓑ)
+  c   (unicode Ⓒ)
+  d   (unicode Ⓓ)
+  e   (unicode Ⓔ)
+  f   (unicode Ⓕ)
+  g   (unicode Ⓖ)
+  h   (unicode Ⓗ)
+  i   (unicode Ⓘ)
+  j   (unicode Ⓙ)
+  k   (unicode Ⓚ)
+  l   (unicode Ⓛ)
+  m   (unicode Ⓜ)
+  n   (unicode Ⓝ)
+  o   (unicode Ⓞ)
+  p   (unicode Ⓟ)
+  q   (unicode Ⓠ)
+  r   (unicode Ⓡ)
+  s   (unicode Ⓢ)
+  t   (unicode Ⓣ)
+  u   (unicode Ⓤ)
+  v   (unicode Ⓥ)
+  w   (unicode Ⓦ)
+  x   (unicode Ⓧ)
+  y   (unicode Ⓨ)
+  z   (unicode Ⓩ)
+)
+
+(deflayermap (APL)
+  lshift @apl-shift
+  rshift @apl-shift
+  ins    (unicode ) ;; Special Unicode sequence to activate the tracer (TC)
+  Backquote     (unicode ⋄)
+  1             (unicode ¨)
+  2             (unicode ¯)
+  3             (unicode <)
+  4             (unicode ≤)
+  5             (unicode =)
+  6             (unicode ≥)
+  7             (unicode >)
+  8             (unicode ≠)
+  9             (unicode ∨)
+  0             (unicode ∧)
+  -             (unicode ×)
+  =             (unicode ÷)
+  q             (unicode ?)
+  w             (unicode ⍵)
+  e             (unicode ∊)
+  r             (unicode ⍴)
+  t             (unicode ~)
+  y             (unicode ↑)
+  u             (unicode ↓)
+  i             (unicode ⍳)
+  o             (unicode ○)
+  p             (unicode *)
+  [             (unicode ←)
+  ]             (unicode →)
+  a             (unicode ⍺)
+  s             (unicode ⌈)
+  d             (unicode ⌊)
+  f             (unicode _)
+  g             (unicode ∇)
+  h             (unicode ∆)
+  j             (unicode ∘)
+  k             (unicode ')
+  l             (unicode ⎕)
+  ;             (unicode ⍎)
+  '             (unicode ⍕)
+  IntlBackslash (unicode ⊢)
+  z             (unicode ⊂)
+  x             (unicode ⊃)
+  c             (unicode ∩)
+  v             (unicode ∪)
+  b             (unicode ⊥)
+  n             (unicode ⊤)
+  m             (unicode |)
+  ,             (unicode ⍝)
+  .             (unicode ⍀)
+  /             (unicode ⌿)
+)
+
+(deflayermap (APL-shift)
+  grave         (unicode ⌺)
+  1             (unicode ⌶)
+  2             (unicode ⍫)
+  3             (unicode ⍒)
+  4             (unicode ⍋)
+  5             (unicode ⌽)
+  6             (unicode ⍉)
+  7             (unicode ⊖)
+  8             (unicode ⍟)
+  9             (unicode ⍱)
+  0             (unicode ⍲)
+  -             (unicode !)
+  =             (unicode ⌹)
+  e             (unicode ⍷)
+  t             (unicode ⍨)
+  i             (unicode ⍸)
+  o             (unicode ⍥)
+  p             (unicode ⍣)
+  [             (unicode ⍞)
+  ]             (unicode ⍬)
+  f             (unicode ⍛)
+  g             (unicode ⍢)
+  j             (unicode ⍤)
+  k             (unicode ⌸)
+  l             (unicode ⌷)
+  ;             (unicode ≡)
+  '             (unicode ≢)
+  IntlBackslash (unicode ⊣)
+  z             (unicode ⊆)
+  x             (unicode ⊇)
+  n             (unicode ¤)
+  m             (unicode ∥)
+  ,             (unicode ⍪)
+  .             (unicode ⍙)
+  /             (unicode ⍠)
+)
+
+(defalias apl-mode   ;; Double-tap prefix key to output its symbol
+  (tap-dance 200 (
+    (layer-while-held APL)
+    _
+  ))
+)
+
+(defalias apl-shift (layer-while-held APL-shift))
+
+(defalias shift-mode (layer-while-held shift-mode))
+(defalias ctrl-mode (layer-while-held ctrl-mode))
+(defalias shift-ctrl-mode (layer-while-held shift-ctrl-mode))
+
+(defsrc)
+(defcfg process-unmapped-keys yes)
