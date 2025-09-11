@@ -1,5 +1,5 @@
 ;; English (UK) keyboard mappings for APL
-;; en-GB_APL-v1.0
+;; en-GB_APL-v1.1
 
 ;; Choose one APL shifting key. Its default behaviour is produced by double-tapping.
 (defvar apl caps)
@@ -118,4 +118,7 @@
 (defalias apl-shift (layer-while-held APL-shift))
 
 (defsrc)
-(defcfg process-unmapped-keys yes)
+(defcfg
+  process-unmapped-keys yes
+  windows-altgr add-lctl-release
+)
