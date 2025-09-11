@@ -46,6 +46,7 @@
   x         @CT
   v         @PT
   a         @SA
+  ___ (multi lshift lctrl _) ;; Defaults for unmapped keys
 )
 
 (deflayermap underscore
