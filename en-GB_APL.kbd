@@ -1,12 +1,23 @@
 ;; English (UK) keyboard mappings for APL
+;; en-GB_APL-v1.0
 
-;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
-(deflayermap (base)
-  caps  @apl-mode
+;; Choose one APL shifting key. Its default behaviour is produced by double-tapping.
+(defvar apl caps)
+
+;; Choose more APL shifting keys by mapping them to @apl-mode in the base layer
+(deflayermap base
+  $apl  @apl-mode
   rctrl @apl-mode
+  lshift @shift
 )
 
-(deflayermap (APL)
+;; With this layer, the order of APL+Shift or Shift+APL does not matter.
+(deflayermap shift
+  $apl @apl-shift
+  ___ (multi lshift _) ;; Defaults for unmapped keys
+)
+
+(deflayermap APL
   lshift @apl-shift
   rshift @apl-shift
   Backquote     (unicode ⋄)
@@ -58,7 +69,7 @@
   /             (unicode ⌿)
 )
 
-(deflayermap (APL-shift)
+(deflayermap APL-shift
   grave         (unicode ⌺)
   1             (unicode ⌶)
   2             (unicode ⍫)
@@ -103,6 +114,8 @@
   ))
 )
 
+(defalias shift (layer-while-held shift))
 (defalias apl-shift (layer-while-held APL-shift))
 
 (defsrc)
+(defcfg process-unmapped-keys yes)
