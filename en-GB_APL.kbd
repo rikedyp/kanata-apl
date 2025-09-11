@@ -1,38 +1,25 @@
 ;; English (UK) keyboard mappings for APL
 ;; en-GB_APL-v1.0
 
-(defcfg
-  concurrent-tap-hold true
+;; Choose one APL shifting key. Its default behaviour is produced by double-tapping.
+(defvar apl caps)
+
+;; Choose more APL shifting keys by mapping them to @apl-mode in the base layer
+(deflayermap base
+  $apl  @apl-mode
+  rctrl @apl-mode
+  lshift @shift
 )
 
-(defvar
-  apl caps
+;; With this layer, the order of APL+Shift or Shift+APL does not matter.
+(deflayermap shift
+  $apl @apl-shift
+  ___ (multi lshift _) ;; Defaults for unmapped keys
 )
 
-(defchordsv2
-  (caps lshift) @apl-shift 100 first-release ()
-)
-;; this delay means a massive compromise between
-;; shifting key order not mattering and other shortcuts requiring a delay
-;; e.g. to select text with shift+[arrow keys], must hold shift for at least 200ms
-
-;; Choose one or more APL shifting keys by mapping them to @apl-mode in the base layer
-(deflayermap (base)
-  caps     @apl-mode
-  rctrl    @apl-mode
-)
-
-(defalias apl-mode   ;; Double-tap prefix key to output its symbol
-  (tap-dance 200 (
-    (layer-while-held APL)
-    _
-  ))
-)
-(defalias apl-shift (layer-while-held APL-shift))
-
-(deflayermap (APL)
+(deflayermap APL
   lshift @apl-shift
-  ;;rshift @apl-shift
+  rshift @apl-shift
   Backquote     (unicode ⋄)
   1             (unicode ¨)
   2             (unicode ¯)
@@ -82,7 +69,7 @@
   /             (unicode ⌿)
 )
 
-(deflayermap (APL-shift)
+(deflayermap APL-shift
   grave         (unicode ⌺)
   1             (unicode ⌶)
   2             (unicode ⍫)
@@ -120,4 +107,15 @@
   /             (unicode ⍠)
 )
 
+(defalias apl-mode   ;; Double-tap prefix key to output its symbol
+  (tap-dance 200 (
+    (layer-while-held APL)
+    _
+  ))
+)
+
+(defalias shift (layer-while-held shift))
+(defalias apl-shift (layer-while-held APL-shift))
+
 (defsrc)
+(defcfg process-unmapped-keys yes)
