@@ -1,5 +1,5 @@
 ;; English (UK) keyboard mappings for APL
-;; en-GB_APL-v1.1
+;; en-GB_APL-v1.2
 
 ;; Choose one APL shifting key. Its default behaviour is produced by double-tapping.
 (defvar apl caps)
@@ -9,12 +9,13 @@
   $apl  @apl-mode
   rctrl @apl-mode
   lshift @shift
+  rshift @rshift
 )
 
 ;; With this layer, the order of APL+Shift or Shift+APL does not matter.
 (deflayermap shift
   $apl @apl-shift
-  ___ (multi lshift _) ;; Defaults for unmapped keys
+  rctrl @apl-shift
 )
 
 (deflayermap APL
@@ -114,7 +115,8 @@
   ))
 )
 
-(defalias shift (layer-while-held shift))
+(defalias shift (multi lsft (layer-while-held shift)))
+(defalias rshift (multi rsft (layer-while-held shift)))
 (defalias apl-shift (layer-while-held APL-shift))
 
 (defsrc)
